@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AddCategoryRequest } from '../models/add-category-request.model';
 
 @Component({
   selector: 'app-add-category',
@@ -6,8 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-category.component.css']
 })
 export class AddCategoryComponent {
-//write method here method name is OnSubmit its takes html form as parameter
-onFormSubmit(form: any) {
-    console.log(form);
+  model: AddCategoryRequest;
+
+  constructor() {
+    this.model = {
+      name: '',
+      urlHandle: ''
+    };
+  }
+
+  onFormSubmit() {
+    console.log(this.model);
   }
 }
