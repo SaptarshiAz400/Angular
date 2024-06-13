@@ -27,4 +27,17 @@ public class CategoryRepository : ICategoryRepository
     {
         return await dbContext.Categories.ToListAsync();
     }
+
+    //write code to get category by id from db
+    public async Task<Category> GetByIdAsync(string id)
+    {
+        Guid categoryId;
+        if (!Guid.TryParse(id, out categoryId))
+        {
+            // Handle invalid id here, for example, return null or throw an exception
+            return null;
+        }
+
+        return await dbContext.Categories.FirstOrDefaultAsync(x => x.Id == categoryId);
+    }
 }

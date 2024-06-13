@@ -62,6 +62,25 @@ namespace CodePulse.API.Controllers
 
             return Ok(response);
         }
+        //write a method for GetCategoryById
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCategoryById(string id)
+        {
+            var category = await categoryRepository.GetByIdAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            var response = new CategoryDto
+            {
+                Id = category.Id,
+                Name = category.Name,
+                UrlHandle = category.UrlHandle
+            };
+
+            return Ok(response);
+        }
     }
 
 }
