@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AddCategoryRequest } from '../models/add-category-request.model';
 import { CategoryService } from '../Services/category.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-category',
   templateUrl: './add-category.component.html',
   styleUrls: ['./add-category.component.css']
 })
-export class AddCategoryComponent {
+export class AddCategoryComponent implements OnDestroy {
   model: AddCategoryRequest;
+  private addCategorySubcribtion?: Subscription
+
+  
 
   constructor(private categoryService:CategoryService ) {
     this.model = {
@@ -18,8 +22,20 @@ export class AddCategoryComponent {
   }
 
   onFormSubmit() {
-    this.categoryService.addCategory(this.model).subscribe(() => {
-      alert('Category added successfully');
+   this.addCategorySubcribtion = this.categoryService.addCategory(this.model).subscribe({
+        next: () => {
+            alert('Category added successfully');
+        },
+        error: (err) => {
+            alert(`Failed to add category: ${err.message}`);
+        }
     });
+}
+
+
+  //write code on destroy method to unsubscribe the subscription
+  ngOnDestroy():void {
+      this.addCategorySubcribtion?.unsubscribe();
   }
+
 }
