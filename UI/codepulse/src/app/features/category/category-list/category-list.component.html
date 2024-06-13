@@ -3,8 +3,8 @@
     <div class="d-flex justify-content-end mt-3">
         <a routerLink="/admin/categories/add" class="btn btn-primary">Add Category</a>
     </div>
-     <!--Table to display the list of categories-->
-     <ng-container *ngIf="categories">
+    <!--Table to display the list of categories-->
+    <ng-container *ngIf="categories">
         <table class="table mt-3">
             <thead>
                 <tr>
@@ -15,9 +15,9 @@
             </thead>
             <tbody>
                 <tr *ngFor="let category of categories">
-                    <td>{{category.Id}}</td>
-                    <td>{{category.Name}}</td>
-                    <td>{{category.UrlHandle}}</td>
+                    <td>{{category.id}}</td>
+                    <td>{{category.name}}</td>
+                    <td>{{category.urlHandle}}</td>
                 </tr>
             </tbody>
         </table>
