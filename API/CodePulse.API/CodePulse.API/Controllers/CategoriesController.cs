@@ -20,7 +20,6 @@ namespace CodePulse.API.Controllers
             this.categoryRepository = categoryRepository;
         }
 
-
         [HttpPost]
         public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequestDto request)
         {
@@ -43,7 +42,26 @@ namespace CodePulse.API.Controllers
 
             return Ok(response);
         }
+        //write  a method for GetCategories
+        [HttpGet]
+        public async Task<IActionResult> GetAllCategories()
+        {
+            var categories = await categoryRepository.GetAllAsync();
+            //wrrite code to map domain model to DTO
 
+            var response = new List<CategoryDto>();
+            foreach (var category in categories)
+            {
+                response.Add(new CategoryDto
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                    UrlHandle = category.UrlHandle
+                });
+            }
+
+            return Ok(response);
+        }
     }
-    
+
 }
