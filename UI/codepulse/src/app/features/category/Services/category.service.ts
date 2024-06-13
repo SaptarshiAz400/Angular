@@ -16,8 +16,7 @@ export class CategoryService {
   {
     return this.http.post<void>(`${environment.apiBaseUrl}/Categories`,model)
   }
-  //write a method to get all categories
-  getAllCategories():Observable<Category[]>{
+  getAllCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${environment.apiBaseUrl}/Categories`);
   }
 }
