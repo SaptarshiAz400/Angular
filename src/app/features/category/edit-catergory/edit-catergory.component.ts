@@ -39,6 +39,9 @@ export class EditCatergoryComponent implements OnInit,OnDestroy {
     });
 
   }
+onFromSubmit(): void {
+   
+}
   
 ngOnDestroy(): void {
     this.paramSubscription?.unsubscribe();
