@@ -28,4 +28,7 @@ export class CategoryService {
   updateCategory(id: string, model: UpdateCategoryRequest): Observable<void> {
     return this.http.put<void>(`${environment.apiBaseUrl}/Categories/${id}`, model);
   }
+  deleteCategory(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.apiBaseUrl}/Categories/${id}`);
+  }
 }

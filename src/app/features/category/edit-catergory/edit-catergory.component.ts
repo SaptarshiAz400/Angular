@@ -62,7 +62,19 @@ this.editsubscription = this.categoryService.updateCategory(this.id, updateCateg
 });
 }
 }
-  
+onDelete(): void {
+    if (this.id) {
+      this.categoryService.deleteCategory(this.id).subscribe({
+        next: () => {
+          this.router.navigate(['admin/categories']);
+          //alert('Category deleted successfully');
+        },
+        error: (err: any) => {
+          alert(`Failed to delete category: ${err.message}`);
+        }
+      });
+    }
+  }
 ngOnDestroy(): void {
     this.paramSubscription?.unsubscribe();
     this.editsubscription?.unsubscribe();

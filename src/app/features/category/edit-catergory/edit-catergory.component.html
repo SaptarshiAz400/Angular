@@ -17,7 +17,9 @@
               <label for="urlHandle">URL Handle</label>
               <input type="text" class="form-control" id="urlHandle" [(ngModel)]="category.urlHandle" name="urlHandle">
             </div>
+            <!--write code for delete button-->
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            <button type="button" class="btn btn-danger mt-3" (click)="onDelete()">delete</button>
           </div>
         </form>
       </ng-container>
