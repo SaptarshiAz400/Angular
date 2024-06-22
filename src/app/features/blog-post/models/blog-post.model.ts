@@ -1,5 +1,5 @@
-export interface AddBlogPost {
-  
+export interface BlogPost {
+    id: string;
     title: string;
     shortDescription: string;
     content: string;
@@ -8,5 +8,4 @@ export interface AddBlogPost {
     publishedDate: Date;
     author: string;
     isVisible: boolean;
-   
 }

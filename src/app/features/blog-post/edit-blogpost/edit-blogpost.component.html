@@ -1,0 +1,43 @@
+<div class="container">
+    <h2>Edit Blogpost</h2>
+    <ng-container *ngIf="blogPost; else notFound">
+        
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="blogpostTitle">Title</label>
+            <input type="text" class="form-control" id="blogpostTitle" [(ngModel)]="blogPost.title" name="title" placeholder="Enter blogpost title" required>
+        </div>
+        <div class="form-group">
+            <label for="shortDescription">Content</label>
+            <textarea class="form-control" id="shortDescription" [(ngModel)]="blogPost.shortDescription" name="shortDescription" rows="5" placeholder="Enter blogpost short description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <input type="text" class="form-control" id="content" [(ngModel)]="blogPost.content" name="content" placeholder="Enter content">
+        </div>
+        <div class="form-group">
+            <label for="publishedDate">Published Date</label>
+            <input type="date" class="form-control" id="publishedDate" [(ngModel)]="blogPost.publishedDate" name="publishedDate">
+        </div>
+        <div class="form-group">
+            <label for="urlHandle">URL Handle</label>
+            <input type="text" class="form-control" id="urlHandle" [(ngModel)]="blogPost.urlHandle" name="urlHandle" placeholder="Enter URL handle">
+        </div>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" class="form-control" id="author" [(ngModel)]="blogPost.author" name="author" placeholder="Enter author">
+        </div>
+        <div class="form-group">
+            <label for="isVisible">Visible</label>
+            <input type="checkbox" id="isVisible" [(ngModel)]="blogPost.isVisible" name="isVisible">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+    </ng-container>
+    <ng-template #notFound>
+        <div class="alert alert-warning" role="alert">
+          Blogpost not found
+        </div>
+    </ng-template>
+</div>
